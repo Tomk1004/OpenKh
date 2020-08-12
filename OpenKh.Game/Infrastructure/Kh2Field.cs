@@ -157,7 +157,17 @@ namespace OpenKh.Game.Infrastructure
 
 
             foreach (var entity in _actors.Where(x => x.IsMeshLoaded && x.IsVisible))
+            {
                 entity.Update((float)deltaTime);
+
+                var normal = _mapCollision.DoesCollide(new n.Vector3(entity.Position.X, entity.Position.Y, entity.Position.Z));
+                var isColliding = normal != n.Vector3.Zero;
+                if (isColliding)
+                {
+                    entity.Position -= entity.Velocity * new Vector3(normal.X, normal.Y, normal.Z);
+                    entity.Velocity = n.Vector3.Zero;
+                }
+            }
 
             if (_isFading)
             {

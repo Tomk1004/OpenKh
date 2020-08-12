@@ -14,6 +14,7 @@ using OpenKh.Engine.MonoGame;
 using OpenKh.Engine;
 using System.IO;
 using OpenKh.Engine.Parsers;
+using OpenKh.Engine.Physics;
 using System.Collections.Specialized;
 using System;
 
@@ -52,6 +53,7 @@ namespace OpenKh.Game.States
         private List<BobEntity> _bobEntities = new List<BobEntity>();
         private List<PmpEntity> _pmpEntities = new List<PmpEntity>();
         private List<MeshGroup> _pmpModels = new List<MeshGroup>();
+        private readonly Kh2PhysicsProcessor _mapCollision = new Kh2PhysicsProcessor();
 
         private MenuState _menuState;
 
@@ -128,6 +130,9 @@ namespace OpenKh.Game.States
 
                 Field.Update(deltaTimes.DeltaTime);
             }
+
+            foreach (var entity in _bobEntities)
+                entity.Update((float)deltaTimes.DeltaTime);
         }
 
         public void Draw(DeltaTimes deltaTimes)
@@ -328,6 +333,10 @@ namespace OpenKh.Game.States
 
             _bobEntities = entries.ForEntry("out", Bar.EntryType.BgObjPlacement, BobDescriptor.Read)?
                 .Select(x => new BobEntity(x))?.ToList() ?? new List<BobEntity>();
+
+            var mapCoctEntry = entries.FirstOrDefault(x => x.Type == Bar.EntryType.MapCollision);
+            if (mapCoctEntry != null)
+                _mapCollision.Load(Coct.Read(mapCoctEntry.Stream));
 
             var bobModels = entries.ForEntries("BOB", Bar.EntryType.Model, Mdlx.Read).ToList();
             var bobTextures = entries.ForEntries("BOB", Bar.EntryType.ModelTexture, ModelTexture.Read).ToList();

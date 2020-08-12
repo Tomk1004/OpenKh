@@ -20,6 +20,8 @@ namespace OpenKh.Game.Entities
     public class ObjectEntity : IEntity, IMonoGameModel
     {
         private Mdlx _model;
+        private const float TerminalFallingVelocity = 32.0f;
+        private const float Gravity = 49.0f;
 
         public ObjectEntity(Kernel kernel, int objectId)
         {
@@ -54,6 +56,7 @@ namespace OpenKh.Game.Entities
         public Vector3 Scaling { get; set; }
 
         public float Time { get; set; }
+        public Vector3 Velocity { get; set; }
 
         public float MotionTime { get; set; }
 
@@ -100,6 +103,12 @@ namespace OpenKh.Game.Entities
 
         public void Update(float deltaTime)
         {
+            Velocity += new Vector3(0, Gravity * deltaTime, 0);
+            if (Velocity.Y > TerminalFallingVelocity)
+                Velocity = new Vector3(Velocity.X, TerminalFallingVelocity, Velocity.Z);
+
+            Position -= Velocity;
+
             Time += deltaTime;
             MotionTime += deltaTime;
             Motion?.ApplyMotion(Model, MotionTime);
@@ -175,7 +184,7 @@ namespace OpenKh.Game.Entities
         public static ObjectEntity FromSpawnPoint(Kernel kernel, SpawnPoint.Entity spawnPoint) =>
             new ObjectEntity(kernel, kernel.GetRealObjectId(spawnPoint.ObjectId))
             {
-                Position = new Vector3(spawnPoint.PositionX, -spawnPoint.PositionY, -spawnPoint.PositionZ),
+                Position = new Vector3(spawnPoint.PositionX, 500, -spawnPoint.PositionZ),
                 Rotation = new Vector3(spawnPoint.RotationX, spawnPoint.RotationY, spawnPoint.RotationZ),
             };
     }
