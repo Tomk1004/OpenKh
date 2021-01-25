@@ -1,4 +1,4 @@
-﻿using OpenKh.Engine.Renderers;
+using OpenKh.Engine.Renderers;
 using OpenKh.Game.Infrastructure;
 using System;
 using System.Collections.Generic;

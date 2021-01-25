@@ -180,7 +180,7 @@ namespace OpenKh.Bbs
 
         public static UInt32 GetBitFieldRange(UInt32 value, int start = 0, int length = 1)
         {
-            UInt32 bit = value << 32 - (start+length);
+            UInt32 bit = value << 32 - (start + length);
             bit >>= 32 - length;
             return bit;
         }
@@ -244,8 +244,10 @@ namespace OpenKh.Bbs
         public static void ReadMeshData(Stream stream, Pmo pmo, int MeshNumber = 0)
         {
             // Go to mesh position.
-            if(MeshNumber == 0) stream.Seek(pmo.PMO_StartPosition + pmo.header.MeshOffset0, SeekOrigin.Begin);
-            else                stream.Seek(pmo.PMO_StartPosition + pmo.header.MeshOffset1, SeekOrigin.Begin);
+            if (MeshNumber == 0)
+                stream.Seek(pmo.PMO_StartPosition + pmo.header.MeshOffset0, SeekOrigin.Begin);
+            else
+                stream.Seek(pmo.PMO_StartPosition + pmo.header.MeshOffset1, SeekOrigin.Begin);
 
             UInt16 VertCnt = 0xFFFF;
 
@@ -262,7 +264,7 @@ namespace OpenKh.Bbs
 
                 meshChunk.TextureID = meshChunk.SectionInfo.TextureID;
                 VertexFlags flags = GetFlags(meshChunk.SectionInfo);
-                
+
                 bool isColorFlagRisen = flags.UniformDiffuseFlag;
 
                 if (pmo.header.SkeletonOffset != 0)
@@ -338,7 +340,7 @@ namespace OpenKh.Bbs
                     long vertexStartPos = stream.Position;
                     int vertexIncreaseAmount = 0;
 
-                    if(pmo.header.SkeletonOffset != 0 && WeightFormat != CoordinateFormat.NO_VERTEX)
+                    if (pmo.header.SkeletonOffset != 0 && WeightFormat != CoordinateFormat.NO_VERTEX)
                     {
                         for (int i = 0; i < (SkinningWeightsCount + 1); i++)
                         {
@@ -473,8 +475,10 @@ namespace OpenKh.Bbs
             ReadTextureSection(stream, pmo);
 
             // Read all data
-            if (pmo.header.MeshOffset0 != 0) ReadMeshData(stream, pmo, 0);
-            if (pmo.header.MeshOffset1 != 0) ReadMeshData(stream, pmo, 1);
+            if (pmo.header.MeshOffset0 != 0)
+                ReadMeshData(stream, pmo, 0);
+            if (pmo.header.MeshOffset1 != 0)
+                ReadMeshData(stream, pmo, 1);
 
             // Read textures.
             for (int i = 0; i < pmo.textureInfo.Length; i++)
@@ -488,7 +492,7 @@ namespace OpenKh.Bbs
             }
 
             // Read Skeleton.
-            if(pmo.header.SkeletonOffset != 0)
+            if (pmo.header.SkeletonOffset != 0)
             {
                 stream.Seek(pmo.PMO_StartPosition + pmo.header.SkeletonOffset, SeekOrigin.Begin);
                 pmo.skeletonHeader = BinaryMapping.ReadObject<SkeletonHeader>(stream);
@@ -719,11 +723,11 @@ namespace OpenKh.Bbs
                             ex.ToString();
                         }
                     }
-                        
+
 
                     int pd = (int)stream.Position % 0x10;
 
-                    for (int n = 0; pd != 0 ; n++)
+                    for (int n = 0; pd != 0; n++)
                     {
                         try
                         {

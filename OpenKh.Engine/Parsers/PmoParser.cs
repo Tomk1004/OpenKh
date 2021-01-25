@@ -24,7 +24,7 @@ namespace OpenKh.Engine.Parsers
                 {
                     Vector4 color;
 
-                    if(Pmo.GetFlags(pmo.Meshes[x].SectionInfo).UniformDiffuseFlag)
+                    if (Pmo.GetFlags(pmo.Meshes[x].SectionInfo).UniformDiffuseFlag)
                     {
                         byte[] byt = BitConverter.GetBytes(pmo.Meshes[x].SectionInfo_opt2.DiffuseColor);
 
@@ -72,7 +72,7 @@ namespace OpenKh.Engine.Parsers
 
         public void ApplyMotion(System.Numerics.Matrix4x4[] matrices)
         {
-            
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using OpenKh.Tools.Common;
+using OpenKh.Tools.Common;
 using OpenKh.Tools.ImageViewer.ViewModels;
 using System.Windows;
 

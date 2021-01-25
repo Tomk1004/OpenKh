@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace OpenKh.Tools.Kh2BattleEditor.Services
 {
@@ -34,7 +34,7 @@ namespace OpenKh.Tools.Kh2BattleEditor.Services
         public static string GetEnemyName(int id)
         {
             _enemyNames.TryGetValue(id, out var name);
-            
+
             return name;
         }
     }

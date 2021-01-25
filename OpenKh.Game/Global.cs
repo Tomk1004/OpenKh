@@ -1,4 +1,4 @@
-﻿namespace OpenKh.Game
+namespace OpenKh.Game
 {
     public class Global
     {

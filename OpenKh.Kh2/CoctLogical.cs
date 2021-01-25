@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace OpenKh.Kh2
                 .Select(collision4 => MapVector(collision4))
                 .ToList();
         }
-        
+
         private static CoctCollisionMeshGroup MapMeshGroup(Coct.CollisionMeshGroup source) =>
             new CoctCollisionMeshGroup
             {

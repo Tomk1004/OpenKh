@@ -1,4 +1,4 @@
-﻿namespace OpenKh.Bbs
+namespace OpenKh.Bbs
 {
     public class Constants
     {

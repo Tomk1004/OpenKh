@@ -1,4 +1,4 @@
-﻿using OpenKh.Engine.Renders;
+using OpenKh.Engine.Renders;
 using OpenKh.Game.Infrastructure;
 
 namespace OpenKh.Game.States.Title

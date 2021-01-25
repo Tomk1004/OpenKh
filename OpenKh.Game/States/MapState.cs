@@ -194,7 +194,7 @@ namespace OpenKh.Game.States
 
             foreach (var ent in _pmpEntities)
             {
-                if(ent.DifferentMatrix)
+                if (ent.DifferentMatrix)
                 {
                     Matrix world = _camera.World;
                     world.M14 = 0;
@@ -234,7 +234,7 @@ namespace OpenKh.Game.States
                 pass.Apply();
 
                 RenderMeshNew(pass, _pmpModels[ent.Index], passRenderOpaque);
-                
+
             }
         }
 

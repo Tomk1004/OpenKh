@@ -1,4 +1,4 @@
-﻿using OpenKh.Game.Debugging;
+using OpenKh.Game.Debugging;
 using OpenKh.Game.Infrastructure;
 using System.IO;
 

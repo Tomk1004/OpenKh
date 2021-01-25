@@ -1,4 +1,4 @@
-﻿namespace OpenKh.Common
+namespace OpenKh.Common
 {
     public static class BytesExtensions
     {

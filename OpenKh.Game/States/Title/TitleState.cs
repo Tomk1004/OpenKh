@@ -172,7 +172,7 @@ namespace OpenKh.Game.States.Title
         {
             CheckTitlLoop(layoutRendererBg);
             CheckTitlLoop(layoutRendererFg);
-            
+
             if (_isInTheaterMenu)
             {
                 switch (layoutRendererTheater.SelectedSequenceGroupIndex)

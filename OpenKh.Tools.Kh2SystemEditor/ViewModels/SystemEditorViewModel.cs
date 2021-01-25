@@ -148,7 +148,7 @@ namespace OpenKh.Tools.Kh2SystemEditor.ViewModels
                     fileName =>
                     {
                         ExportTable(
-                            fileName, 
+                            fileName,
                             Item.Select(viewModel => new ItemExport(_messageProvider, viewModel.Item))
                         );
                     },
@@ -163,7 +163,7 @@ namespace OpenKh.Tools.Kh2SystemEditor.ViewModels
                     fileName =>
                     {
                         ExportTable(
-                            fileName, 
+                            fileName,
                             Trsr.Select(viewModel => new TrsrExport(Item, viewModel.Treasure))
                         );
                     },

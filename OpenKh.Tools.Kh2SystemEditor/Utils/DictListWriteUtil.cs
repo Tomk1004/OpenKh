@@ -1,4 +1,4 @@
-﻿using OpenKh.Common;
+using OpenKh.Common;
 using CsvHelper;
 using NPOI.XSSF.UserModel;
 using System.Collections.Generic;
